@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy Industry P.L.C.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-green: #00C853; /* Vibrant modern green */
+            --dark-green: #003d19;    /* For text contrast */
+            --light-green: #e0f7ea;   /* Background accent */
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 10px 30px rgba(0, 200, 83, 0.15);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-green);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 200, 83, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Placeholder for your actual Logo Image */
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: var(--dark-green);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, var(--light-green) 0%, var(--white) 70%);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--dark-green), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 200, 83, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 200, 83, 0.4);
+        }
+
+        /* --- SERVICES / ABOUT --- */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            background-color: var(--dark-green);
+            color: var(--white);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-green);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #002911; /* Very dark green */
+            color: #888;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        .creator-link {
+            color: var(--primary-green);
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+        }
+
+        .creator-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: var(--primary-green);
+            transition: width .3s;
+        }
+
+        .creator-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                display: none; /* Simple hide for mobile for this demo */
+            }
+            
+            .header {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-placeholder">S</div> 
+            <span class="brand-name">Synergy Industry P.L.C.</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>The Future of<br>Manufacturing</h1>
+        <p>Premium quality straw manufacturing in the heart of Ethiopia. Modern, Sustainable, Efficient.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+    </section>
+
+    <section class="section" id="products">
+        <h2 class="section-title">Our Synergy</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Eco-Friendly</h3>
+                <p>We utilize cutting-edge technology to ensure our manufacturing process is environmentally conscious and sustainable for the future.</p>
+            </div>
+            <div class="card">
+                <h3>High Volume</h3>
+                <p>Capable of meeting large-scale industrial demands with precision and speed. We power the supply chain of Addis Ababa and beyond.</p>
+            </div>
+            <div class="card">
+                <h3>Innovation</h3>
+                <p>Synergy Industry P.L.C. pushes the boundaries of standard manufacturing to deliver a superior product efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <h2 class="section-title" style="color: white;">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h4>Address</h4>
+                <p>CMC, Addis Ababa</p>
+                <p>Ethiopia</p>
+            </div>
+            <div class="contact-item">
+                <h4>Phone</h4>
+                <p><a href="tel:+251929831214">+251 929 831 214</a></p>
+            </div>
+            <div class="contact-item">
+                <h4>Email</h4>
+                <p><a href="mailto:Barkotzewdu42@gmail.com">Barkotzewdu42@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Synergy Industry P.L.C. All rights reserved.</p>
+        <br>
+        <p>created by <a href="https://barkotzewdu.vercel.app/" target="_blank" class="creator-link">Barkot</a></p>
+    </footer>
+
+</body>
+</html>
 
